@@ -60,7 +60,6 @@ const Link = chakra(({ isLoading, children, isExternal, onClick, href, noLink }:
     alignItems: 'center',
     minWidth: 0, // for content truncation - https://css-tricks.com/flexbox-truncated-text/
   };
-
   if (noLink) {
     return <Skeleton isLoaded={ !isLoading } { ...styles }>{ children }</Skeleton>;
   }
@@ -104,7 +103,7 @@ const Icon = ({ isLoading, iconSize, noIcon, name, color, borderRadius }: IconBa
       color={ color ?? defaultColor }
       minW={ 0 }
       flexShrink={ 0 }
-    />
+    />  
   );
 };
 

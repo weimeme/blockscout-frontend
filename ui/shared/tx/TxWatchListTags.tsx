@@ -15,7 +15,6 @@ const TxWatchListTags = ({ tx, isLoading }: Props) => {
     ...(tx.from?.watchlist_names || []),
     ...(tx.to?.watchlist_names || []),
   ].filter(Boolean);
-
   if (tags.length === 0) {
     return null;
   }

@@ -15,7 +15,6 @@ interface Props extends ColorThemeColor {
 const ColorModeSwitchSample = ({ hex, sampleBg, onClick, isActive }: Props) => {
   const bgColor = useColorModeValue('white', 'gray.900');
   const activeBgColor = useColorModeValue('blue.50', 'blackAlpha.800');
-
   const activeBorderColor = useToken('colors', useColorModeValue('blackAlpha.800', 'gray.50'));
   const hoverBorderColor = useToken('colors', 'link_hovered');
 

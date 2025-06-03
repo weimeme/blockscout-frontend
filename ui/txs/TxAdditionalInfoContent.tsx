@@ -105,7 +105,7 @@ const TxAdditionalInfoContent = ({ tx }: { tx: Transaction }) => {
           <Text fontWeight="600" as="span">{ tx.position }</Text>
         </Box>
       </Box>
-      <LinkInternal fontSize="sm" href={ route({ pathname: '/tx/[hash]', query: { hash: tx.hash } }) }>More details</LinkInternal>
+      <LinkInternal fontSize="sm" color="link_hovered" href={ route({ pathname: '/tx/[hash]', query: { hash: tx.hash } }) }>More details</LinkInternal>
     </>
   );
 };

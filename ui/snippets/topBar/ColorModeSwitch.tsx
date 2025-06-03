@@ -80,7 +80,7 @@ const ColorModeSwitch = () => {
             variant="simple"
             colorScheme="blue"
             aria-label="color mode switch"
-            icon={ <IconSvg name={ activeTheme.icon } boxSize={ 5 }/> }
+            icon={ <IconSvg name={ activeTheme.icon } boxSize={ 5 } color="#E0A532"/> }
             boxSize={ 5 }
             onClick={ onToggle }
           />

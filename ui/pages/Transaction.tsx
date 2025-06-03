@@ -79,7 +79,7 @@ const TransactionPageContent = () => {
 
   return (
     <>
-      <TextAd mb={ 6 }/>
+      {/* <TextAd mb={ 6 }/> */}
       <PageTitle
         title="Transaction details"
         backLink={ backLink }

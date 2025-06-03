@@ -33,7 +33,6 @@ const TxsListItem = ({ tx, isLoading, showBlockInfo, currentAddress, enableTimeI
   const dataTo = tx.to ? tx.to : tx.created_contract;
 
   const timeAgo = useTimeAgoIncrement(tx.timestamp, enableTimeIncrement);
-
   return (
     <ListItemMobile display="block" width="100%" isAnimated key={ tx.hash }>
       <Flex justifyContent="space-between" mt={ 4 }>
@@ -67,7 +66,7 @@ const TxsListItem = ({ tx, isLoading, showBlockInfo, currentAddress, enableTimeI
             whiteSpace="nowrap"
             textOverflow="ellipsis"
           >
-            <span>{ tx.method }</span>
+            <span>{ tx.method == '0x88d695b2' ? 'batchTransfer' : tx.method  }</span>
           </Skeleton>
         </Flex>
       ) }

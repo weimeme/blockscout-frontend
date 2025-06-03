@@ -211,7 +211,7 @@ const AddressPageContent = () => {
 
   return (
     <>
-      <TextAd mb={ 6 }/>
+      {/* <TextAd mb={ 6 }/> */}
       <PageTitle
         title={ `${ addressQuery.data?.is_contract ? 'Contract' : 'Address' } details` }
         backLink={ backLink }

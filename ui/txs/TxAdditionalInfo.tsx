@@ -36,7 +36,6 @@ const TxAdditionalInfo = ({ hash, tx, isMobile, isLoading, className }: Props) =
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const content = hash !== undefined ? <TxAdditionalInfoContainer hash={ hash }/> : <TxAdditionalInfoContent tx={ tx }/>;
-
   if (isMobile) {
     return (
       <>

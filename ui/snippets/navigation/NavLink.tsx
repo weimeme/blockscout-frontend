@@ -46,7 +46,7 @@ const NavLink = ({ item, isCollapsed, px, className, onClick }: Props) => {
       onClick={ onClick }
       _hover={{
         '& *': {
-          color: 'link_hovered',
+          color: colors.text.hover,
         },
       }}
     >

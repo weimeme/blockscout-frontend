@@ -17,10 +17,9 @@ type LinkProps = EntityBase.LinkBaseProps & Pick<EntityProps, 'address'>;
 
 const Link = chakra((props: LinkProps) => {
   const defaultHref = route({ pathname: '/address/[hash]', query: { ...props.query, hash: props.address.hash } });
-
   return (
     <EntityBase.Link
-      { ...props }
+      { ...props}
       href={ props.href ?? defaultHref }
     >
       { props.children }
@@ -144,12 +143,16 @@ export interface EntityProps extends EntityBase.EntityBaseProps {
 }
 
 const AddressEntry = (props: EntityProps) => {
-  const linkProps = _omit(props, [ 'className' ]);
+  const linkProps = {..._omit(props, [ 'className' ]),style:{
+    _hover: {
+    color: 'link_hovered',
+    textDecoration: 'underline solid'
+    },
+  }};
   const partsProps = _omit(props, [ 'className', 'onClick' ]);
-
   const context = useAddressHighlightContext();
-  const highlightedBgColor = useColorModeValue('blue.50', 'blue.900');
-  const highlightedBorderColor = useColorModeValue('blue.200', 'blue.600');
+  const highlightedBgColor = useColorModeValue('rgb(224,165,50,0.15)', 'rgb(224,165,50,0.15)');
+  const highlightedBorderColor = useColorModeValue('#E0A532', '#E0A532');
 
   return (
     <Container
@@ -177,7 +180,7 @@ const AddressEntry = (props: EntityProps) => {
       } : undefined }
     >
       <Icon { ...partsProps }/>
-      <Link { ...linkProps }>
+      <Link  { ...linkProps }>
         <Content { ...partsProps }/>
       </Link>
       <Copy { ...partsProps }/>

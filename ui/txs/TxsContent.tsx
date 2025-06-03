@@ -62,7 +62,6 @@ const TxsContent = ({
     const value = getNextSortValue<TransactionsSortingField, TransactionsSortingValue>(SORT_SEQUENCE, field)(sort);
     setSorting(value);
   }, [ sort, setSorting ]);
-
   const content = items ? (
     <>
       <Show below="lg" ssr={ false }>
@@ -123,7 +122,7 @@ const TxsContent = ({
       }
     />
   ) : null;
-
+console.log(items,'items')
   return (
     <DataListDisplay
       isError={ isError }

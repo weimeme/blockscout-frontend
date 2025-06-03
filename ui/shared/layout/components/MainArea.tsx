@@ -7,7 +7,7 @@ interface Props {
 
 const MainArea = ({ children }: Props) => {
   return (
-    <Flex w="100%" minH="calc(100vh - 36px)" alignItems="stretch">
+    <Flex w="100%" minH="calc(100vh - 72px)" alignItems="stretch">
       { children }
     </Flex>
   );

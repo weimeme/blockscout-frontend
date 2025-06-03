@@ -44,6 +44,7 @@ const Hint = ({ label, className, tooltipProps, isLoading }: Props) => {
         onMouseEnter={ onOpen }
         onMouseLeave={ onClose }
         onClick={ handleClick }
+        _hover={{ color: '#FFC72B' }}
       />
     </Tooltip>
   );

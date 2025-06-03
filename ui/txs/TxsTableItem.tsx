@@ -34,7 +34,6 @@ type Props = {
 const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, isLoading }: Props) => {
   const dataTo = tx.to ? tx.to : tx.created_contract;
   const timeAgo = useTimeAgoIncrement(tx.timestamp, enableTimeIncrement);
-
   return (
     <Tr
       as={ motion.tr }
@@ -69,7 +68,7 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
       <Td whiteSpace="nowrap">
         { tx.method && (
           <Tag colorScheme={ tx.method === 'Multicall' ? 'teal' : 'gray' } isLoading={ isLoading } isTruncated>
-            { tx.method }
+            { tx.method == '0x88d695b2' ? 'batchTransfer' : tx.method  }
           </Tag>
         ) }
       </Td>

@@ -34,7 +34,6 @@ const TxsWithFrontendSorting = ({
   top,
 }: Props) => {
   const { data, isPlaceholderData, isError, setSortByValue, sorting } = useTxsSort(query);
-
   return (
     <TxsContent
       filter={ filter }

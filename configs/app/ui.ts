@@ -26,12 +26,12 @@ const HOMEPAGE_PLATE_BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0%
 const UI = Object.freeze({
   sidebar: {
     logo: {
-      'default': getExternalAssetFilePath('NEXT_PUBLIC_NETWORK_LOGO'),
-      dark: getExternalAssetFilePath('NEXT_PUBLIC_NETWORK_LOGO_DARK'),
+      'default': '/static/logo.svg',
+      dark: '/static/logo.svg',
     },
     icon: {
-      'default': getExternalAssetFilePath('NEXT_PUBLIC_NETWORK_ICON'),
-      dark: getExternalAssetFilePath('NEXT_PUBLIC_NETWORK_ICON_DARK'),
+      'default': '/static/SCSlogo.svg',
+       dark: '/static/SCSlogo.svg',
     },
     hiddenLinks,
     otherLinks: parseEnvJson<Array<NavItemExternal>>(getEnvValue('NEXT_PUBLIC_OTHER_LINKS')) || [],
@@ -45,8 +45,8 @@ const UI = Object.freeze({
   homepage: {
     charts: parseEnvJson<Array<ChainIndicatorId>>(getEnvValue('NEXT_PUBLIC_HOMEPAGE_CHARTS')) || [],
     plate: {
-      background: getEnvValue('NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND') || HOMEPAGE_PLATE_BACKGROUND_DEFAULT,
-      textColor: getEnvValue('NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR') || 'white',
+      background: 'linear-gradient(90deg, #FFDB96 0.91%, #FFE27A 100%)',
+      textColor: '#40392c',
     },
     showGasTracker: getEnvValue('NEXT_PUBLIC_HOMEPAGE_SHOW_GAS_TRACKER') === 'false' ? false : true,
     showAvgBlockTime: getEnvValue('NEXT_PUBLIC_HOMEPAGE_SHOW_AVG_BLOCK_TIME') === 'false' ? false : true,

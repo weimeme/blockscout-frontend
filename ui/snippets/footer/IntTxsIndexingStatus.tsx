@@ -1,4 +1,4 @@
-import { IconButton, Popover, PopoverTrigger, PopoverContent, PopoverBody, Flex, Text, useColorModeValue } from '@chakra-ui/react';
+import { IconButton, Popover, PopoverTrigger,Button, PopoverContent, PopoverBody, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import React from 'react';
 
@@ -9,10 +9,10 @@ import useApiQuery, { getResourceKey } from 'lib/api/useApiQuery';
 import { apos, nbsp, ndash } from 'lib/html-entities';
 import useSocketChannel from 'lib/socket/useSocketChannel';
 import useSocketMessage from 'lib/socket/useSocketMessage';
+import useToast from 'lib/hooks/useToast';
 import IconSvg from 'ui/shared/IconSvg';
-
 const IntTxsIndexingStatus = () => {
-
+  const toast = useToast();
   const { data, isError, isPending } = useApiQuery('homepage_indexing_status');
 
   const bgColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
@@ -83,12 +83,105 @@ const IntTxsIndexingStatus = () => {
       ) }
     </Flex>
   );
-
+  const handleAddNetwork = async () => {
+    try{
+    // 检查是否已经连接
+    const accounts = await window?.ethereum?.request({ method: 'eth_requestAccounts' });
+    // if(accounts && accounts.length > 0) {
+    //   return (<Alert status="success">
+    //            <Text>Success</Text>
+    //             <Text>Successfully added network to your wallet</Text>
+    //          </Alert>)
+    // }
+    if (!accounts || accounts.length === 0) {
+      console.error('No accounts found'); 
+      return;
+    }
+    const chainID = '0x7B1';
+    try {
+    // 尝试切换网络
+    await window?.ethereum?.request({ // 切换网络成功
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: chainID }],
+    });
+    toast({
+      position: 'top-right',
+      title: 'Success',
+      description: 'Successfully added network to your wallet',
+      status: 'success',
+      variant: 'subtle',
+      isClosable: true,
+    });
+    }catch (error:any) { // 表示没有这个网络 添加网络
+      if (error.code === 4902) {
+        try {
+           window?.ethereum?.request({
+            method: "wallet_addEthereumChain",
+            params: [
+              {
+                chainId: chainID,
+                chainName: 'TSCS Network',
+                nativeCurrency: {
+                  name: "TSCS Network",
+                  symbol: 'TSCS',
+                  decimals: 18,
+                },
+                rpcUrls: [
+                  "https://testnetrpc.scschain.com"
+                ],
+                blockExplorerUrls: [
+                  "https://testnetscan.scschain.com/"
+                ],
+                iconUrls: [""],
+              },
+            ],
+          }).catch(e=>{
+            toast({
+              position: 'top-right',
+              title: 'error',
+              description: e.message,
+              status: 'error',
+              variant: 'subtle',
+              isClosable: true,
+            });
+          })
+        } catch (addError:any) {
+          toast({
+            position: 'top-right',
+            title: 'error',
+            description: addError.message,
+            status: 'error',
+            variant: 'subtle',
+            isClosable: true,
+          });
+        }
+      } else {
+       
+      }
+    }
+  }catch (error) {
+    console.error("Unexpected error:", error);
+  }
+  }
+  const MaskButton = (
+    <Button
+      size="sm"
+      w="auto"
+      variant='outline'
+      px={3}
+      onClick={handleAddNetwork}
+    >
+    <IconSvg name="wallets/metamask" mr={ 3 } w={ 5 } h={ 5 }/>
+      Add TSCS Network
+    </Button>
+    
+  );
   return (
     <Popover placement="bottom-start" isLazy trigger="hover">
       <PopoverTrigger>
         { trigger }
       </PopoverTrigger>
+      { MaskButton }
       <PopoverContent maxH="450px" overflowY="hidden" w="240px">
         <PopoverBody p={ 4 } bgColor={ bgColor } boxShadow="2xl">
           { hint }

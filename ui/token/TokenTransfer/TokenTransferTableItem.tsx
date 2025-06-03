@@ -54,7 +54,7 @@ const TokenTransferTableItem = ({
       <Td>
         { method ? (
           <Box my="3px">
-            <Tag isLoading={ isLoading } isTruncated>{ method }</Tag>
+            <Tag isLoading={ isLoading } isTruncated>{ method == '0x88d695b2' ? 'batchTransfer' : method }</Tag>
           </Box>
         ) : null }
       </Td>
@@ -99,4 +99,4 @@ const TokenTransferTableItem = ({
   );
 };
 
-export default React.memo(TokenTransferTableItem);
+  export default React.memo(TokenTransferTableItem);

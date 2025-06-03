@@ -39,6 +39,8 @@ const TxsTable = ({
   enableTimeIncrement,
   isLoading,
 }: Props) => {
+  console.log(txs,'txs')
+  
   return (
     <AddressHighlightProvider>
       <Table variant="simple" minWidth="950px" size="xs">

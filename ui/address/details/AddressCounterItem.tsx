@@ -45,7 +45,7 @@ const AddressCounterItem = ({ prop, query, address, onClick, isAddressQueryLoadi
         return <span>0</span>;
       }
       return (
-        <LinkInternal href={ route({ pathname: '/address/[hash]', query: { hash: address, tab: PROP_TO_TAB[prop] } }) } onClick={ onClick }>
+        <LinkInternal color='link_hovered' href={ route({ pathname: '/address/[hash]', query: { hash: address, tab: PROP_TO_TAB[prop] } }) } onClick={ onClick }>
           { Number(data).toLocaleString() }
         </LinkInternal>
       );

@@ -115,11 +115,11 @@ const TxDetails = () => {
 
   return (
     <>
-      { config.chain.isTestnet && (
+      {/* { config.chain.isTestnet && (
         <Skeleton mb={ 6 } isLoaded={ !isPlaceholderData }>
           <Alert status="warning">This is a testnet transaction only</Alert>
         </Skeleton>
-      ) }
+      ) } */}
       <Grid columnGap={ 8 } rowGap={{ base: 3, lg: 3 }} templateColumns={{ base: 'minmax(0, 1fr)', lg: 'max-content minmax(728px, auto)' }}>
         { socketStatus && (
           <GridItem colSpan={{ base: undefined, lg: 2 }} mb={ 2 }>
@@ -253,7 +253,7 @@ const TxDetails = () => {
         { data.allowed_peekers && data.allowed_peekers.length > 0 && (
           <TxAllowedPeekers items={ data.allowed_peekers }/>
         ) }
-        <DetailsSponsoredItem isLoading={ isPlaceholderData }/>
+        {/* <DetailsSponsoredItem isLoading={ isPlaceholderData }/> */}
 
         <DetailsInfoItemDivider/>
 
@@ -505,6 +505,7 @@ const TxDetails = () => {
                 textDecorationLine="underline"
                 textDecorationStyle="dashed"
                 onClick={ handleCutClick }
+                color='link_hovered'
               >
                 { isExpanded ? 'Hide details' : 'View details' }
               </Link>
