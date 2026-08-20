@@ -53,7 +53,7 @@ const Footer = () => {
       icon: 'social/tweet' as const,
       iconSize: '18px',
       text: 'Twitter',
-      url: 'https://twitter.com/SuperExet',
+      url: 'https://x.com/SuperEx',
     },
     {
       icon: 'social/discord' as const,
